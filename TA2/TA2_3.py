@@ -16,3 +16,5 @@ def file_student_info():
         
     except Exception as e: 
         print(f"An error occured:{e}")
+        
+file_student_info()
