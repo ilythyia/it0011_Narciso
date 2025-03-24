@@ -1,0 +1,84 @@
+def divide(a, b):
+    if b == 0:
+        print("Error: Denominator cannot be zero.")
+        return None
+    return a / b
+
+def exponentiate(a, b):
+    return a ** b
+
+def remainder(a, b):
+    if b == 0:
+        print("Error: Denominator cannot be zero.")
+        return None
+    return a % b
+
+def summation(a, b):
+    if b <= a:
+        print("Error: The second number must be greater than the first number.")
+        return None
+    return sum(range(a, b + 1))
+
+def print_menu():
+    print("\n" + "*" * 30)
+    print("FUNCTIONS: NARCISO")
+    print("*" * 30)
+    print("[D] - Divide")
+    print("[E] - Exponentiation")
+    print("[R] - Remainder")
+    print("[F] - Summation")
+    print("[Q] - Quit")
+    print("*" * 30)
+
+def main():
+    while True:
+        print_menu()
+        
+        choice = input("Enter your choice: ").strip().upper()
+        
+        if choice == 'Q':
+            print("Exiting the program.")
+            break
+        
+        if choice in ['D', 'R']:
+            try:
+                num1 = float(input("Enter the first number: "))
+                num2 = float(input("Enter the second number: "))
+            except ValueError:
+                print("Invalid input. Please enter numeric values.")
+                continue
+            
+            if choice == 'D':
+                result = divide(num1, num2)
+            elif choice == 'R':
+                result = remainder(num1, num2)
+        
+        elif choice == 'E':
+            try:
+                num1 = float(input("Enter the base: "))
+                num2 = float(input("Enter the exponent: "))
+            except ValueError:
+                print("Invalid input. Please enter numeric values.")
+                continue
+            
+            result = exponentiate(num1, num2)
+        
+        elif choice == 'F':
+            try:
+                num1 = int(input("Enter the first number (limit): "))
+                num2 = int(input("Enter the second number (limit): "))
+            except ValueError:
+                print("Invalid input. Please enter integer values.")
+                continue
+            
+            result = summation(num1, num2)
+        
+        else:
+            print("Invalid choice. Please select a valid operation.")
+            continue
+        
+        if result is not None:
+            print(f"The result is: {result}")
+
+if __name__ == "__main__":
+    main()
